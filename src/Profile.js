@@ -9,7 +9,7 @@ class Profile extends Component {
                 <div>
                     <img src={user.picture} alt={user.name} />
                     <h2>Hello {user.name}</h2>
-                    <p>{user.name}</p>
+                    <p>{user.email}</p>
                 </div>
             }
             </>

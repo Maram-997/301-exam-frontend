@@ -11,7 +11,7 @@ class ShowModel extends React.Component {
                     <Modal.Header closeButton>
                         <Modal.Title>update Model</Modal.Title>
                     </Modal.Header>
-                    <Form>
+                    <Form onSubmit={this.props.updateColor}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>color name</Form.Label>
                             <Form.Control type="text" defaultValue={this.props.targetedObj.title} name="title"  />
@@ -20,14 +20,14 @@ class ShowModel extends React.Component {
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>color url image</Form.Label>
-                            <Form.Control type="text" defaultValue={this.props.targetedObj.imageUrl}  mame='imageUrl' />
+                            <Form.Control type="text" defaultValue={this.props.targetedObj.imageUrl}  name='imageUrl' />
                         </Form.Group>
                      
                         <Modal.Footer>
                         <Button variant="secondary" onClick={this.props.handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" >
+                        <Button variant="primary" type='submit' >
                             Save Changes
                         </Button>
                     </Modal.Footer>

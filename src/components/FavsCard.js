@@ -20,20 +20,20 @@ class FavsCard extends React.Component {
     componentDidMount = async () => {
         const { user } = this.props.auth0
 
-        let url = `http://localhost:3000/favs?email=${this.state.email}`
+        let url = `http://localhost:3001/favs?email=${user.email}`
         let result = await axios.get(url)
         this.setState({
-            favArr: result,
+            favArr: result.data,
             email: user.email
         })
     }
     ///////////////////////////
     deleteColor = async (idx) => {
 
-        let url = `http://localhost:3000/deleteColor/${this.state.index}?email=${this.state.email}`
+        let url = `http://localhost:3001/deleteColor/${idx}?email=${this.state.email}`
         let result = await axios.delete(url)
         this.setState({
-            favArr: result
+            favArr: result.data
         })
 
     }
@@ -47,11 +47,12 @@ class FavsCard extends React.Component {
 
         this.setState({
             show: true,
-            targetedObj: obj
+            targetedObj: obj,
+            index: idx
         })
     }
     //////////////
-    handleClose() {
+    handleClose=()=> {
         this.setState({
             show: false
         })
@@ -63,10 +64,13 @@ class FavsCard extends React.Component {
             title: event.target.title.value,
             imageUrl: event.target.imageUrl.value
         }
-        let url = `http://localhost:3000/updatecolor/${this.state.index}?email=${this.state.email}`
+        this.setState({
+            show: false
+        })
+        let url = `http://localhost:3001/updatecolor/${this.state.index}?email=${this.state.email}`
         let result = await axios.put(url, selected)
         this.setState({
-            favArr: result
+            favArr: result.data
         })
     }
 

@@ -14,7 +14,7 @@ class ApiData extends React.Component {
     componentDidMount = async () => {
         const  {user}  = this.props.auth0;
 
-        let url = 'http://localhost:3000/colors'
+        let url = 'http://localhost:3001/colors'
         let result = await axios.get(url)
         this.setState({
             colors: result.data,
@@ -23,7 +23,7 @@ class ApiData extends React.Component {
     }
 
     addToFav= async(idx)=>{
-        let url = `http://localhost:3000/addtofav?email=${this.state.email}`
+        let url = `http://localhost:3001/addtofav?email=${this.state.email}`
         let obj ={
             title:this.state.colors[idx].title,
             imageUrl:this.state.colors[idx].imageUrl

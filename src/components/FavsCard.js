@@ -20,7 +20,7 @@ class FavsCard extends React.Component {
     componentDidMount = async () => {
         const { user } = this.props.auth0
 
-        let url = `http://localhost:3001/favs?email=${user.email}`
+        let url = `https://exam-301-backend.herokuapp.com/favs?email=${user.email}`
         let result = await axios.get(url)
         this.setState({
             favArr: result.data,
@@ -30,7 +30,7 @@ class FavsCard extends React.Component {
     ///////////////////////////
     deleteColor = async (idx) => {
 
-        let url = `http://localhost:3001/deleteColor/${idx}?email=${this.state.email}`
+        let url = `https://exam-301-backend.herokuapp.com/deleteColor/${idx}?email=${this.state.email}`
         let result = await axios.delete(url)
         this.setState({
             favArr: result.data
@@ -67,7 +67,7 @@ class FavsCard extends React.Component {
         this.setState({
             show: false
         })
-        let url = `http://localhost:3001/updatecolor/${this.state.index}?email=${this.state.email}`
+        let url = `https://exam-301-backend.herokuapp.com/updatecolor/${this.state.index}?email=${this.state.email}`
         let result = await axios.put(url, selected)
         this.setState({
             favArr: result.data
